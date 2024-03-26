@@ -18,12 +18,15 @@ public class Food extends Node {
     public Food(int row, int col) {
         super(row, col);
         random = new Random();
-        generateFood();
     }
 
-    public void generateFood() {
-        setRow(random.nextInt(Board.NUM_ROWS));
-        setCol(random.nextInt(Board.NUM_COL));
+    public void generateFood(SnakeBody snakeBody) {
+        int numRows = Board.NUM_ROWS;
+        int numCols = Board.NUM_COL;
+        do {
+            setRow(random.nextInt(numRows));
+            setCol(random.nextInt(numCols));
+        } while (snakeBody.containsNode(getRow(), getCol())); 
     }
 
     public void paint(Graphics g, int squareWidth, int squareHeight) {

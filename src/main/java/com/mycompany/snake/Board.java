@@ -40,9 +40,9 @@ public class Board extends javax.swing.JPanel {
     public Board() {
         initComponents();
         food = new Food(5, 5);
-        food.generateFood();
+        food.generateFood(snake);
         specialFood = new SpecialFood(10, 10);
-        specialFood.generateFood();
+        specialFood.generateFood(snake);
         snake = new SnakeBody();
         setFocusable(true);
         setPreferredSize(new Dimension(NUM_COL * 15, NUM_ROWS * 15));
@@ -88,6 +88,7 @@ public class Board extends javax.swing.JPanel {
     }
 
     public void initGame() {
+        specialFood_timer = 0;
         snake = new SnakeBody();
         keyAdapter = new MyKeyAdapter();
         addKeyListener(keyAdapter);
@@ -103,16 +104,20 @@ public class Board extends javax.swing.JPanel {
         });
         timer.start();
     }
+    
+    public void stop() {
+        timer.stop();
+    }
 
     public void tick() {
         if (snake.move()) {
             if (snake.checkFoodEaten(food)) {
                 scoreBoard.incrementFood();
-                food.generateFood();
+                food.generateFood(snake);
             }
             if (snake.checkSpecialFoodEaten(specialFood)) {
                     scoreBoard.incrementSpecialFood();
-                    specialFood.generateFood();
+                    specialFood.generateFood(snake);
                     specialFood_timer = 0;
             }
             repaint();

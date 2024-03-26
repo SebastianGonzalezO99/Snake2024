@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JLabel;
 
 /**
@@ -51,7 +53,7 @@ public class ScoreBoard extends javax.swing.JPanel {
     }
     
     public void updateScoreBoard() {
-        label.setText("Score: " + scoreBoard);
+        label.setText(ConfigData.getInstance().getPlayerName() + " Score: " + scoreBoard);
     }
 
     /**

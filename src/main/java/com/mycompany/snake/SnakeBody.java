@@ -136,5 +136,14 @@ public class SnakeBody {
         }
         return false;
     }
+    
+    public boolean containsNode(int row, int col) {
+        for (Node node : body) {
+            if (node.getRow() == row && node.getCol() == col) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

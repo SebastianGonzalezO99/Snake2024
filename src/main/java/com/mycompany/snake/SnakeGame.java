@@ -23,6 +23,19 @@ public class SnakeGame extends javax.swing.JFrame {
         scoreBoard.updateScoreBoard();
         board.initGame();
     }
+    
+    public void reset() {
+        board.stop();
+        initComponents();
+        board.setScoreBoard(scoreBoard);
+        setLocationRelativeTo(null);
+        ConfigDialog configDialog = new ConfigDialog(this, true);
+        configDialog.setLocationRelativeTo(null);
+        configDialog.setVisible(true);
+        scoreBoard.updateScoreBoard();
+        board.initGame();
+        board.requestFocusInWindow();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,10 +46,19 @@ public class SnakeGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         scoreBoard = new com.mycompany.snake.ScoreBoard();
         board = new com.mycompany.snake.Board();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Restart");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, java.awt.BorderLayout.PAGE_END);
         getContentPane().add(scoreBoard, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout boardLayout = new javax.swing.GroupLayout(board);
@@ -47,13 +69,17 @@ public class SnakeGame extends javax.swing.JFrame {
         );
         boardLayout.setVerticalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
+            .addGap(0, 246, Short.MAX_VALUE)
         );
 
         getContentPane().add(board, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        reset();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,6 +119,7 @@ public class SnakeGame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.snake.Board board;
+    private javax.swing.JButton jButton1;
     private com.mycompany.snake.ScoreBoard scoreBoard;
     // End of variables declaration//GEN-END:variables
 }

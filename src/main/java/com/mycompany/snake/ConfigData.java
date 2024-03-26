@@ -20,6 +20,15 @@ public class ConfigData {
     public static final Color BG2 = new Color(87, 138, 52);
     public static int deltaTime;
     private static ConfigData instance;
+    private static String playerName;
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
 
     public static void setDeltaTime(int deltaTime) {
         ConfigData.deltaTime = deltaTime;

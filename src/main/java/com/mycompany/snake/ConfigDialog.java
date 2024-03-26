@@ -4,8 +4,10 @@
  */
 package com.mycompany.snake;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,9 +15,7 @@ import javax.swing.JComboBox;
  */
 public class ConfigDialog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ConfigDialog
-     */
+    private String name;
     public ConfigDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -57,7 +57,7 @@ public class ConfigDialog extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("PLAY");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -103,7 +103,8 @@ public class ConfigDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
+        name = jTextField1.getText();
+        ConfigData.getInstance().setPlayerName(name);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -113,20 +114,26 @@ public class ConfigDialog extends javax.swing.JDialog {
             case "Beginner":
                 ConfigData.getInstance().setDeltaTime(200);
                 break;
-                case "Intermediate":
+            case "Intermediate":
                 ConfigData.getInstance().setDeltaTime(150);
                 break;
-                case "Hard":
+            case "Hard":
                 ConfigData.getInstance().setDeltaTime(100);
                 break;
-                case "Sonic":
+            case "Sonic":
                 ConfigData.getInstance().setDeltaTime(50);
                 break;
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(jTextField1.getText().equals("")){
+             JOptionPane.showMessageDialog(null, "Porfavor ingresa un nombre", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+        name = jTextField1.getText();
+        ConfigData.getInstance().setPlayerName(name);
         setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
