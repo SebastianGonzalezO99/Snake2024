@@ -40,9 +40,9 @@ public class Board extends javax.swing.JPanel {
     public Board() {
         initComponents();
         snake = new SnakeBody();
-        food = new Food(5, 5);
+        food = new Food(-1,-1);
         food.generateFood(snake);
-        specialFood = new SpecialFood(10, 10);
+        specialFood = new SpecialFood(-1,-1);
         specialFood.generateFood(snake);
         setFocusable(true);
         setPreferredSize(new Dimension(NUM_COL * 15, NUM_ROWS * 15));
@@ -126,7 +126,6 @@ public class Board extends javax.swing.JPanel {
             gameOver();
         }
         specialFood_timer++;
-        System.out.println(specialFood);
     }
 
     public void paintMatrix(Graphics g) {
@@ -156,6 +155,9 @@ public class Board extends javax.swing.JPanel {
         if (specialFood != null && specialFood_timer >= 30) {
             specialFood.paint(g, getSquareWidth(), getSquareHeight());
             if(specialFood_timer == 70) {
+              specialFood = null;
+              specialFood = new SpecialFood(-1,-1);
+              specialFood.generateFood(snake);
               specialFood_timer = 0;
             }
         }
