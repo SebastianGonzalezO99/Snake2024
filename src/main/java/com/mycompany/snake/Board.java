@@ -39,11 +39,11 @@ public class Board extends javax.swing.JPanel {
      */
     public Board() {
         initComponents();
+        snake = new SnakeBody();
         food = new Food(5, 5);
         food.generateFood(snake);
         specialFood = new SpecialFood(10, 10);
         specialFood.generateFood(snake);
-        snake = new SnakeBody();
         setFocusable(true);
         setPreferredSize(new Dimension(NUM_COL * 15, NUM_ROWS * 15));
     }
