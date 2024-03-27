@@ -126,6 +126,7 @@ public class Board extends javax.swing.JPanel {
             gameOver();
         }
         specialFood_timer++;
+        System.out.println(specialFood);
     }
 
     public void paintMatrix(Graphics g) {

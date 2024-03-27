@@ -12,10 +12,18 @@ import java.util.Random;
  * @author alu13114532
  */
 public class SpecialFood extends Food{
-    
+     private boolean active;
     
     public SpecialFood(int row, int col) {
         super(row, col);
+    }
+    
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public void paint(Graphics g, int squareWidth, int squareHeight) {
